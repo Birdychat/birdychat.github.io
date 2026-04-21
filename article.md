@@ -63,6 +63,13 @@ function autoInit() {
 document.addEventListener('DOMContentLoaded', autoInit);
 ```
 
+The `autoInit` function locates the resource script tag and extracts the `data-id` from its dataset. Once extracted, the initialization runs after the `DOMContentLoaded` event fires. This approach enables the simplified embed code:
+
+```html
+<script src="https://birdychat.com/js/widget.js" data-id="da0a042d-78b7-4b0b-98b6-bc05a8c119c4"></script>
+```
+
+
 Final version of simplified `widget.js` file looked like this:
 ```js
 (function () {
@@ -80,15 +87,9 @@ function autoInit() {
 }
 
 document.addEventListener('DOMContentLoaded', autoInit);
-
 })();
 ```
 
-The `autoInit` function locates the resource script tag and extracts the `data-id` from its dataset. Once extracted, the initialization runs after the `DOMContentLoaded` event fires. This approach enables the simplified embed code:
-
-```html
-<script src="https://birdychat.com/js/widget.js" data-id="da0a042d-78b7-4b0b-98b6-bc05a8c119c4"></script>
-```
 
 ## Conclusion
 
