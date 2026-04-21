@@ -63,6 +63,25 @@ function autoInit() {
 document.addEventListener('DOMContentLoaded', autoInit);
 ```
 
+Final version of simplified `widget.js` file looked like this:
+```js
+(function () {
+  window.init = function (x) {
+    const container = document.createElement('div');
+    container.textContent = x;
+    document.body.appendChild(container);
+  }
+})();
+
+function autoInit() {
+  const scriptTag = document.querySelector('script[src\*="widget.js"][data-id]');
+  if (scriptTag) {
+    window.init(scriptTag.dataset.id);
+  }
+}
+document.addEventListener('DOMContentLoaded', autoInit);
+```
+
 The `autoInit` function locates the resource script tag and extracts the `data-id` from its dataset. Once extracted, the initialization runs after the `DOMContentLoaded` event fires. This approach enables the simplified embed code:
 
 ```html
